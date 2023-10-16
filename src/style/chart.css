@@ -1,0 +1,28 @@
+.chart-container {
+	margin-top: 8em;
+	display: flex;
+	justify-content: center;
+}
+
+canvas.language-chart {
+	max-width: 20em;
+	max-height: 20em;
+	min-width: 20em;
+	min-height: 20em;
+}
+
+@media (min-width: 768px) {
+	canvas.language-chart{
+		max-width: 30em;
+		max-height: 30em;
+		min-width: 30em;
+		min-height: 30em;
+	}
+}
+
+	@media (min-width: 992px) {
+		.heading {
+			justify-content: flex-start;
+			margin-left: 1em;
+		}
+}

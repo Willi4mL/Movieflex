@@ -17,26 +17,27 @@ const buttonHover = {
 
 export default function Menu() {
 	const [isOpen, setIsOpen] = useState(false)
-	
+
 	return (
 		<section className="menu-container">
 			<motion.nav
 				initial={false}
 				animate={isOpen ? 'open' : 'closed'}
 				className="menu"
-				>
+			>
 				<motion.button
-					whileTap={{ scale: 0.95, 
+					whileTap={{
+						scale: 0.95,
 						transition: {
 							type: "spring",
 							bounce: 0.7,
 							duration: 0.7,
 						},
 					}}
-					whileHover = {{...buttonHover}}
+					whileHover={{ ...buttonHover }}
 					onClick={() => setIsOpen(!isOpen)}
 					className="menu-button"
-					>Statistik
+				>Statistik
 				</motion.button>
 				<motion.ul
 					variants={{
@@ -57,12 +58,23 @@ export default function Menu() {
 						}
 					}}
 					className="menu-item-container"
-					>
-					<motion.li item={menuItems}>Item 1 </motion.li>
-					<motion.li item={menuItems}>Item 2 </motion.li>
-					<motion.li item={menuItems}>Item 3 </motion.li>
-					<motion.li item={menuItems}>Item 4 </motion.li>
-					<motion.li item={menuItems}>Item 5 </motion.li>
+				>
+					<motion.li item={menuItems}
+						whileHover={{ ...buttonHover }}
+					>Språk
+					</motion.li>
+					<motion.li item={menuItems}
+						whileHover={{ ...buttonHover }}
+					>Premiärmånad
+					</motion.li>
+					<motion.li item={menuItems}
+						whileHover={{ ...buttonHover }}
+					>Längd
+					</motion.li>
+					<motion.li item={menuItems}
+						whileHover={{ ...buttonHover }}
+					>Antal filmer per genre
+					</motion.li>
 				</motion.ul>
 
 			</motion.nav>
