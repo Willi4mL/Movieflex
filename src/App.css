@@ -1,0 +1,29 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--shadow-before: 2px 2px 7px #c0c0c0;
+	--main-color: #fed56b
+}
+
+.heading {
+	display: flex;
+	justify-content: center;
+	margin-top: 1em;
+}
+
+@media (min-width: 768px) {
+	.heading {
+		font-size: 2.5em;
+	}
+}
+
+	@media (min-width: 992px) {
+		.heading {
+			justify-content: flex-start;
+			margin-left: 1em;
+		}
+}

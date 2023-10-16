@@ -1,0 +1,27 @@
+.search-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 4em;
+}
+
+.search-container-position {
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	position: relative;
+}
+
+.search-input {
+	font-size: 1.1em;
+	border-radius: 0.5em;
+	padding: 0.2em 0 0 0.5em;
+	box-shadow: var(--shadow-before);
+	border: 3px solid var(--main-color)
+}
+
+.magnifying {
+	width: 1.2em;
+	position: absolute;
+	right:4px;
+	top: 7px;
+}

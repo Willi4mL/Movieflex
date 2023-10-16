@@ -1,0 +1,35 @@
+.menu-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 2em;
+}
+
+.menu-button {
+	background-color: var(--main-color);
+	padding: 0.5em 4em;
+	border-radius: 2em;
+	border: none;
+	font-family: arial;
+	font-weight: 600;
+	font-size: 1.2em;
+	box-shadow: var(--shadow-before);
+	text-align: center;
+}
+
+.menu-button:hover,
+.menu-item-container > *:hover {
+	cursor: pointer;
+}
+
+.menu-item-container {
+	margin-top: 0.5em;
+	background-color: var(--main-color);
+	box-shadow: var(--shadow-before);
+	padding: 0.5em;
+	list-style-type: none;
+}
+
+.menu-item-container > * {
+	margin: 1.5em 0 1.5em 0;
+	border-bottom: 1px solid #1a1a1a;
+}
