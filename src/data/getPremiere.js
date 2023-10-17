@@ -27,49 +27,39 @@ export function getPremiere() {
 	addItem(featuresData, premiereDataFeatures)
 	addItem(documentariesData, premiereDatadocumentaries)
 
-
-
-		// Convert all keys from Data to an array
-		const sortData = Object.keys(premiereDataSpecials).map((Premiere) => ({
+	function sortData(data) {
+		return Object.keys(data).map((Premiere) => ({
 			Premiere,
-			// count 
-			count: premiereDataSpecials[Premiere],
+			count: data[Premiere]
 		}))
+	}
 
-		const sortDataFeatures = Object.keys(premiereDataFeatures).map((Premiere) => ({
-			Premiere,
-			// count
-			count: premiereDataFeatures[Premiere],
-		}))
+	const sortDataSpecials = sortData(premiereDataSpecials)
+	const sortDataFeatures = sortData(premiereDataFeatures)
+	const sortDataDucumentaries = sortData(premiereDatadocumentaries)
 
-		const sortDataDucumentaries = Object.keys(premiereDatadocumentaries).map((Premiere) => ({
-			Premiere,
-			// count 
-			count: premiereDatadocumentaries[Premiere],
-		}))
-	
-		const pieChartData = {
-			// Use the object key from Data as label
-			labels: sortData.map(item => item.Premiere),
-			datasets: [
-				{
-					// Use the value from Data as data
-					label: 'Specialer',
-					data: sortData.map(item => item.count),
-					backgroundColor: color[1],
-				},
-				{
-					label: 'Feature',
-					data: sortDataFeatures.map(item => item.count),
-					backgroundColor: color[3],
-				},
-				{
-					label: 'Dokumentär',
-					data: sortDataDucumentaries.map(item => item.count),
-					backgroundColor: color[4],
-				}
-			]
-		}
-	
-		return pieChartData
+	const pieChartData = {
+		// Use the object key from Data as label
+		labels: sortDataSpecials.map(item => item.Premiere),
+		datasets: [
+			{
+				// Use the value from Data as data
+				label: 'Specialer',
+				data: sortDataSpecials.map(item => item.count),
+				backgroundColor: color[1],
+			},
+			{
+				label: 'Feature',
+				data: sortDataFeatures.map(item => item.count),
+				backgroundColor: color[3],
+			},
+			{
+				label: 'Dokumentär',
+				data: sortDataDucumentaries.map(item => item.count),
+				backgroundColor: color[4],
+			}
+		]
+	}
+
+	return pieChartData
 }

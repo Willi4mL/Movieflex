@@ -4,7 +4,7 @@
 	justify-content: center;
 }
 
-canvas.language-chart {
+canvas.chart {
 	max-width: 30em;
 	max-height: 30em;
 	min-width: 20em;
@@ -12,7 +12,7 @@ canvas.language-chart {
 }
 
 @media (min-width: 768px) {
-	canvas.language-chart{
+	canvas.chart{
 		max-width: 30em;
 		max-height: 30em;
 		min-width: 30em;

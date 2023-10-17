@@ -9,3 +9,8 @@ export const premiereState = atom({
 	key: 'premiereState',
 	default: false
 })
+
+export const lengthState = atom({
+	key: 'lengthState',
+	default: false
+})

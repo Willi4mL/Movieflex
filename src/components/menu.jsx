@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import '../style/menu.css'
 import { useRecoilState } from "recoil";
-import { languageState, premiereState } from "./state";
+import { languageState, lengthState, premiereState } from "./state";
 
 const menuItems = {
 	open: {
@@ -21,15 +21,25 @@ export default function Menu() {
 	const [isOpen, setIsOpen] = useState(false)
 	const [isLanguageClicked, setIsLanguageClicked] = useRecoilState(languageState)
 	const [isPremiereClicked, setIsPremiereClicked] = useRecoilState(premiereState)
+	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
 
 	function handleLanguageClick() {
 		setIsLanguageClicked(true)
+		setIsLengthClicked(false)
 		setIsPremiereClicked(false)
 		setIsOpen(false)
 	}
 
 	function handlePremiereClick() {
 		setIsPremiereClicked(true)
+		setIsLengthClicked(false)
+		setIsLanguageClicked(false)
+		setIsOpen(false)
+	}
+
+	function handleLengthClick() {
+		setIsLengthClicked(true)
+		setIsPremiereClicked(false)
 		setIsLanguageClicked(false)
 		setIsOpen(false)
 	}
@@ -87,6 +97,7 @@ export default function Menu() {
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
+						onClick={handleLengthClick}
 					>Längd
 					</motion.li>
 					<motion.li item={menuItems}
