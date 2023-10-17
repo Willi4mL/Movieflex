@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import '../style/menu.css'
 import { useRecoilState } from "recoil";
 import { genreState, languageState, lengthState, premiereState, searchState } from "./state";
@@ -24,6 +24,17 @@ export default function Menu() {
 	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
 	const [isSearch, setIsSearch] = useRecoilState(searchState)
+	const ref = useRef(null)
+
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if(ref.current && !ref.current.contains(event.target)) {
+				setIsOpen(false)
+			}
+		}
+		document.addEventListener('click', handleClickOutside, true)
+	}, [ref])
+
 
 	function handleLanguageClick() {
 		setIsLanguageClicked(true)
@@ -101,6 +112,7 @@ export default function Menu() {
 						}
 					}}
 					className="menu-item-container"
+					ref={ref}
 				>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}

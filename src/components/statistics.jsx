@@ -49,7 +49,7 @@ export const MovieLanguage = () => {
 						{isSearch.map((result, index) => (
 							<li key={index}>
 								<p>Title: {result.Title}</p>
-								<p>Genre: {result.Genre}</p>
+								<p>Genre: {result.Genre || 'Documentaries'}</p>
 								<p>Premiere: {result.Premiere}</p>
 								<p>Runtime: {result.Runtime}</p>
 								<p>Language: {result.Language}</p>
@@ -62,9 +62,7 @@ export const MovieLanguage = () => {
 							<li key={index}>{result.Title}</li>
 						))}
 					</ul>
-				)
-
-				}
+				)}
 
 
 			</section>
