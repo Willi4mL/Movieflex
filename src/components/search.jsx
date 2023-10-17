@@ -25,14 +25,18 @@ function Search() {
 		const results = data.filter((item) => item.Title.toLowerCase().includes(query))
 		query === '' ? setIsSearch([]) : setIsSearch(results)
 
+		if(results.length === 1) {
+			setIsSearch(results[0])
+		}
+
 		if (query === '') {
-			setIsSearch([]);
+			setIsSearch([])
 		  } else {
-			setIsSearch(results);
-			setIsGenreClicked(false);
-			setIsLengthClicked(false);
-			setIsPremiereClicked(false);
-			setIsLanguageClicked(false);
+			setIsSearch(results)
+			setIsGenreClicked(false)
+			setIsLengthClicked(false)
+			setIsPremiereClicked(false)
+			setIsLanguageClicked(false)
 		  }
 		
 	}

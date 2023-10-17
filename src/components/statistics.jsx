@@ -23,6 +23,8 @@ export const MovieLanguage = () => {
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
 	const [isSearch, setIsSearch] = useRecoilState(searchState)
 
+	const index = Math.random(100)
+
 	return (
 		<>
 			<section className='chart-container'>
@@ -42,13 +44,28 @@ export const MovieLanguage = () => {
 					<Pie data={pieGenre} className='chart' />
 					: null
 				}
-				
+				{isSearch.length === 1 ? (
+					<ul>
+						{isSearch.map((result, index) => (
+							<li key={index}>
+								<p>Title: {result.Title}</p>
+								<p>Genre: {result.Genre}</p>
+								<p>Premiere: {result.Premiere}</p>
+								<p>Runtime: {result.Runtime}</p>
+								<p>Language: {result.Language}</p>
+							</li>
+						))}
+					</ul>
+				) : (
 					<ul>
 						{isSearch.map((result, index) => (
 							<li key={index}>{result.Title}</li>
 						))}
 					</ul>
-				
+				)
+
+				}
+
 
 			</section>
 		</>
