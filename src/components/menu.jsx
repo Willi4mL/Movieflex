@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import '../style/menu.css'
+import { useRecoilState } from "recoil";
+import { languageState, premiereState } from "./state";
 
 const menuItems = {
 	open: {
@@ -8,7 +10,7 @@ const menuItems = {
 		y: 0,
 		transition: { type: 'spring', stiffness: 300, damping: 24 },
 	},
-	closeed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+	closeed: { opacity: 0, y: 20 }
 }
 
 const buttonHover = {
@@ -17,6 +19,20 @@ const buttonHover = {
 
 export default function Menu() {
 	const [isOpen, setIsOpen] = useState(false)
+	const [isLanguageClicked, setIsLanguageClicked] = useRecoilState(languageState)
+	const [isPremiereClicked, setIsPremiereClicked] = useRecoilState(premiereState)
+
+	function handleLanguageClick() {
+		setIsLanguageClicked(true)
+		setIsPremiereClicked(false)
+		setIsOpen(false)
+	}
+
+	function handlePremiereClick() {
+		setIsPremiereClicked(true)
+		setIsLanguageClicked(false)
+		setIsOpen(false)
+	}
 
 	return (
 		<section className="menu-container">
@@ -61,10 +77,12 @@ export default function Menu() {
 				>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
+						onClick={handleLanguageClick}
 					>Språk
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
+						onClick={handlePremiereClick}
 					>Premiärmånad
 					</motion.li>
 					<motion.li item={menuItems}

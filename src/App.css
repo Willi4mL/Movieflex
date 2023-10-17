@@ -9,21 +9,25 @@
 	--main-color: #fed56b
 }
 
-.heading {
+.header-container {
 	display: flex;
 	justify-content: center;
-	margin-top: 1em;
+	margin: 0;
+}
+
+.heading {
+	margin-top: 0.4em;
+	border-bottom: 2px solid var(--main-color);
+	border-radius: 0 0 0 0.8em;
+	width: 5.5em;
+	padding-left: 0.4em;
+	margin-right: 0.4em;
+	font-size: 4em;
 }
 
 @media (min-width: 768px) {
 	.heading {
-		font-size: 2.5em;
+		margin-top: 0.4em;
+		font-size: 5em;
 	}
-}
-
-	@media (min-width: 992px) {
-		.heading {
-			justify-content: flex-start;
-			margin-left: 1em;
-		}
 }

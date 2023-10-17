@@ -6,12 +6,16 @@ import { MovieLanguage } from './components/statistics.jsx'
 function App() {
 
   return (
-    <main>
-      <h1 className='heading'>MovieFlex</h1>
-      <Search />
-      <Menu />
-      <MovieLanguage />
-    </main>
+    <>
+      <header className='header-container'>
+        <h1 className='heading'>MovieFlex</h1>
+      </header>
+      <main>
+        <Search />
+        <Menu />
+        <MovieLanguage />
+      </main>
+    </>
   )
 }
 
