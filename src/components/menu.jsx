@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import '../style/menu.css'
 import { useRecoilState } from "recoil";
-import { genreState, languageState, lengthState, premiereState } from "./state";
+import { genreState, languageState, lengthState, premiereState, searchState } from "./state";
 
 const menuItems = {
 	open: {
@@ -23,6 +23,7 @@ export default function Menu() {
 	const [isPremiereClicked, setIsPremiereClicked] = useRecoilState(premiereState)
 	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
+	const [isSearch, setIsSearch] = useRecoilState(searchState)
 
 	function handleLanguageClick() {
 		setIsLanguageClicked(true)
@@ -30,6 +31,7 @@ export default function Menu() {
 		setIsPremiereClicked(false)
 		setIsGenreClicked(false)
 		setIsOpen(false)
+		setIsSearch([])
 	}
 
 	function handlePremiereClick() {
@@ -38,6 +40,7 @@ export default function Menu() {
 		setIsLanguageClicked(false)
 		setIsGenreClicked(false)
 		setIsOpen(false)
+		setIsSearch([])
 	}
 
 	function handleLengthClick() {
@@ -46,6 +49,7 @@ export default function Menu() {
 		setIsLanguageClicked(false)
 		setIsGenreClicked(false)
 		setIsOpen(false)
+		setIsSearch([])
 	}
 
 	function handleGenreClick() {
@@ -54,6 +58,7 @@ export default function Menu() {
 		setIsPremiereClicked(false)
 		setIsLanguageClicked(false)
 		setIsOpen(false)
+		setIsSearch([])
 	}
 
 	return (
