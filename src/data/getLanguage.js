@@ -1,8 +1,7 @@
 import specialsData from './specials.json'
 import featureData from './features.json'
 import documentariesData from './documentaries.json'
-
-export const colors = ['#85E6FF', '#FFAC5E', '#FFFDDE', '#FF6B9D', '#6BFF79', '#77B1BF', '##FF9178', '#78A0AA', '#BEFF5E', '#FF4A4A', '#2D4CFF', '#B8A3FF', '#FFF6A3', '#A3FFDC', '#FFA28F', '#6751AD', '#AD485C', '#FFA3B6', '#DFE9FF', '#AD9540', '#AD5D40']
+import { colors } from './colors'
 
 export function getLanguage() {
 	const languageData = {}

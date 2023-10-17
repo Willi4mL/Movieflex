@@ -2,7 +2,7 @@ import specialsData from './specials.json'
 import featuresData from './features.json'
 import documentariesData from './documentaries.json'
 
-import { colors } from './getLanguage'
+import { colors } from './colors'
 
 const data = [...specialsData, ...featuresData, ...documentariesData]
 const color = colors

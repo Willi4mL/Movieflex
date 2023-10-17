@@ -14,3 +14,8 @@ export const lengthState = atom({
 	key: 'lengthState',
 	default: false
 })
+
+export const genreState = atom({
+	key: 'genreState',
+	default: false
+})

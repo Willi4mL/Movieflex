@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import '../style/menu.css'
 import { useRecoilState } from "recoil";
-import { languageState, lengthState, premiereState } from "./state";
+import { genreState, languageState, lengthState, premiereState } from "./state";
 
 const menuItems = {
 	open: {
@@ -22,11 +22,13 @@ export default function Menu() {
 	const [isLanguageClicked, setIsLanguageClicked] = useRecoilState(languageState)
 	const [isPremiereClicked, setIsPremiereClicked] = useRecoilState(premiereState)
 	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
+	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
 
 	function handleLanguageClick() {
 		setIsLanguageClicked(true)
 		setIsLengthClicked(false)
 		setIsPremiereClicked(false)
+		setIsGenreClicked(false)
 		setIsOpen(false)
 	}
 
@@ -34,11 +36,21 @@ export default function Menu() {
 		setIsPremiereClicked(true)
 		setIsLengthClicked(false)
 		setIsLanguageClicked(false)
+		setIsGenreClicked(false)
 		setIsOpen(false)
 	}
 
 	function handleLengthClick() {
 		setIsLengthClicked(true)
+		setIsPremiereClicked(false)
+		setIsLanguageClicked(false)
+		setIsGenreClicked(false)
+		setIsOpen(false)
+	}
+
+	function handleGenreClick() {
+		setIsGenreClicked(true)
+		setIsLengthClicked(false)
 		setIsPremiereClicked(false)
 		setIsLanguageClicked(false)
 		setIsOpen(false)
@@ -102,6 +114,7 @@ export default function Menu() {
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
+						onClick={handleGenreClick}
 					>Antal filmer per genre
 					</motion.li>
 				</motion.ul>
