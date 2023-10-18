@@ -4,7 +4,7 @@ import documentariesData from './documentaries.json'
 
 import { colors } from './colors'
 
-const data = [...specialsData, ...featuresData, ...documentariesData]
+const data = [...specialsData, ...featuresData]
 const dataDocumentaries = [...documentariesData]
 
 export function getGenre() {
@@ -21,8 +21,8 @@ export function getGenre() {
 		}
 	})
 
-	dataDocumentaries.forEach((item) => {
-		const genreDocumentaries = item.Title
+	dataDocumentaries.forEach(() => {
+		const genreDocumentaries = 'Documentaries'
 
 		if (newObjectgenre[genreDocumentaries]) {
 			newObjectgenre[genreDocumentaries]++
