@@ -5,9 +5,12 @@ import documentariesData from '../data/documentaries.json'
 import { useRecoilState } from 'recoil'
 import { genreState, languageState, lengthState, premiereState, searchState } from './state'
 import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion';
 
 const data = [...specialsData, ...featuresData, ...documentariesData]
-function Search() {
+
+// Search input
+export function Search() {
 	const [isSearch, setIsSearch] = useRecoilState(searchState)
 	const [isLanguageClicked, setIsLanguageClicked] = useRecoilState(languageState)
 	const [isPremiereClicked, setIsPremiereClicked] = useRecoilState(premiereState)
@@ -17,7 +20,7 @@ function Search() {
 
 	useEffect(() => {
 		inputRef.current.focus()
-	},[])
+	}, [])
 
 	function handleSearch(event) {
 		const query = (event.target.value.toLowerCase())
@@ -25,20 +28,19 @@ function Search() {
 		const results = data.filter((item) => item.Title.toLowerCase().includes(query))
 		query === '' ? setIsSearch([]) : setIsSearch(results)
 
-		if(results.length === 1) {
+		if (results.length === 1) {
 			setIsSearch(results[0])
 		}
 
 		if (query === '') {
 			setIsSearch([])
-		  } else {
+		} else {
 			setIsSearch(results)
 			setIsGenreClicked(false)
 			setIsLengthClicked(false)
 			setIsPremiereClicked(false)
 			setIsLanguageClicked(false)
-		  }
-		
+		}
 	}
 
 	return (
@@ -57,4 +59,108 @@ function Search() {
 	)
 }
 
-export default Search
+
+// Search result
+const searchedTitle = {
+	open: {
+		opacity: 1,
+		y: 0,
+		transition: { type: 'spring', stiffness: 300, damping: 24 },
+	},
+	closed: { opacity: 0, y: 20 }
+}
+
+const ulInitial = {
+	borderRadius: '1em',
+}
+
+const liInitial = {
+	backgroundColor: '#f5f5f5'
+}
+
+export function SearchResult() {
+	const [isSearch, setIsSearch] = useRecoilState(searchState)
+
+	return (
+		<>
+			<section className='search-result-container'>
+				<motion.div
+					initial='closed'
+					animate={isSearch.length > 0 ? 'open' : 'closed'}
+					className='search-motion-div'
+					variants={{
+						open: {
+							clipPath: "inset(0% 0% 0% 0% round 10px)",
+							transition: {
+								type: "spring",
+								bounce: 0.7,
+								duration: 0.7,
+							},
+						},
+						closed: {
+							clipPath: "inset(10% 50% 90% 50% round 10px)",
+							transition: {
+								type: "spring",
+								duration: 0.3
+							}
+						}
+					}}
+					style={{
+						border: "20px solid #fed56b",
+					}}
+				>
+					{isSearch.length === 1 ? (
+						<motion.ul
+							initial={{ ...ulInitial }}
+							style={{
+								border: "5px solid #9264FF",
+								boxShadow: '2px 2px 7px #c0c0c0'
+							}}
+						>
+							{isSearch.map((result, index) => (
+								<motion.li key={index}
+									item={searchedTitle}
+									initial={{ ...liInitial }}
+									className='singel-title-li'
+								>
+									<p><strong>{result.Title}</strong></p>
+									<p><strong>Genre:</strong> {result.Genre || 'Documentaries'}</p>
+									<p><strong>Premiär:</strong> {result.Premiere}</p>
+									<p><strong>Längd:</strong> {result.Runtime}</p>
+									<p><strong>Språk</strong> {result.Language}</p>
+								</motion.li>
+							))}
+
+						</motion.ul>
+					) : (
+						<>
+							<motion.ul
+								initial={{ ...ulInitial }}
+								style={{
+									border: "5px solid #9264FF",
+									boxShadow: '2px 2px 7px #c0c0c0'
+								}}
+							>
+								<h2>Titel</h2>
+								{isSearch.map((result, index) => (
+									<motion.li key={index}
+										item={searchedTitle}
+										initial={{ ...liInitial }}
+										className='multi-title-li'
+									><p>{result.Title}</p>
+									</motion.li>
+								))}
+							</motion.ul>
+						</>
+					)}
+					<div className='border-jelly-top'></div>
+					<div className='border-jelly-top-hang'></div>
+					<div className='border-jelly-left'></div>
+					<div className='border-jelly-left-second'></div>
+					<div className='border-jelly-left-third'></div>
+					<div className='border-jelly-circle'></div>
+				</motion.div>
+			</section>
+		</>
+	)
+}

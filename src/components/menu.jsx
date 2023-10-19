@@ -10,7 +10,7 @@ const menuItems = {
 		y: 0,
 		transition: { type: 'spring', stiffness: 300, damping: 24 },
 	},
-	closeed: { opacity: 0, y: 20 }
+	closed: { opacity: 0, y: 20 }
 }
 
 const buttonHover = {
@@ -26,6 +26,7 @@ export default function Menu() {
 	const [isSearch, setIsSearch] = useRecoilState(searchState)
 	const ref = useRef(null)
 
+	// close menu when click outside
 	useEffect(() => {
 		const handleClickOutside = (event) => {
 			if(ref.current && !ref.current.contains(event.target)) {

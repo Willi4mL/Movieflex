@@ -7,26 +7,44 @@ import { colors } from './colors'
 const color = colors
 
 export function getPremiere() {
+	const months = [
+	  "January",
+	  "February",
+	  "March",
+	  "April",
+	  "May",
+	  "June",
+	  "July",
+	  "August",
+	  "September",
+	  "October",
+	  "November",
+	  "December"
+	];
+  
 	const premiereDataSpecials = {}
 	const premiereDataFeatures = {}
 	const premiereDatadocumentaries = {}
-
+  
 	function addItem(dataFrom, newObject) {
-		dataFrom.forEach((item) => {
-			if (item.Premiere.split(' ')[0] in newObject) {
-				// Add plus one to key
-				newObject[item.Premiere.split(' ')[0]]++
-			} else {
-				// Add new key with value 1
-				newObject[item.Premiere.split(' ')[0]] = 1
+		// Set month as key with value 0
+		months.forEach((month) => {
+			newObject[month] = 0
+		  })
+		
+		  dataFrom.forEach((item) => {
+			const premiereMonth = item.Premiere.split(' ')[0]
+			if (months.includes(premiereMonth)) {
+			  // Increment the count for existing months
+			  newObject[premiereMonth]++
 			}
-		})
-	}
-
-	addItem(specialsData, premiereDataSpecials)
-	addItem(featuresData, premiereDataFeatures)
-	addItem(documentariesData, premiereDatadocumentaries)
-
+		  })
+		}
+	  
+	addItem(specialsData, premiereDataSpecials);
+	addItem(featuresData, premiereDataFeatures);
+	addItem(documentariesData, premiereDatadocumentaries);
+  
 	function sortData(data) {
 		return Object.keys(data).map((Premiere) => ({
 			Premiere,
@@ -40,7 +58,7 @@ export function getPremiere() {
 
 	const pieChartData = {
 		// Use the object key from Data as label
-		labels: sortDataSpecials.map(item => item.Premiere),
+		labels: months.map(item => item),
 		datasets: [
 			{
 				// Use the value from Data as data
