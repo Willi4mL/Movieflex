@@ -41,9 +41,9 @@ export function getPremiere() {
 		  })
 		}
 	  
-	addItem(specialsData, premiereDataSpecials);
-	addItem(featuresData, premiereDataFeatures);
-	addItem(documentariesData, premiereDatadocumentaries);
+	addItem(specialsData, premiereDataSpecials)
+	addItem(featuresData, premiereDataFeatures)
+	addItem(documentariesData, premiereDatadocumentaries)
   
 	function sortData(data) {
 		return Object.keys(data).map((Premiere) => ({
@@ -62,7 +62,7 @@ export function getPremiere() {
 		datasets: [
 			{
 				// Use the value from Data as data
-				label: 'Specialer',
+				label: 'Specials',
 				data: sortDataSpecials.map(item => item.count),
 				backgroundColor: color[1],
 			},
@@ -72,7 +72,7 @@ export function getPremiere() {
 				backgroundColor: color[3],
 			},
 			{
-				label: 'Dokumentär',
+				label: 'Documentaries',
 				data: sortDataDucumentaries.map(item => item.count),
 				backgroundColor: color[4],
 			}

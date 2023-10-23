@@ -4,7 +4,7 @@ import { Pie, Bar, Line } from 'react-chartjs-2'
 import '../style/chart.css'
 import { useRecoilState } from "recoil";
 
-import { languageState, premiereState, lengthState, genreState, searchState } from './state'
+import { languageState, premiereState, lengthState, genreState } from './state'
 
 import { getLanguage } from '../data/getLanguage.js'
 import { getPremiere } from '../data/getPremiere'
@@ -24,8 +24,6 @@ export const MovieLanguage = () => {
 	const [isPremiereClicked, setIsPremiereClicked] = useRecoilState(premiereState)
 	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
-	const [isSearch, setIsSearch] = useRecoilState(searchState)
-
 
 
 	return (

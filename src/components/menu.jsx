@@ -8,9 +8,14 @@ const menuItems = {
 	open: {
 		opacity: 1,
 		y: 0,
-		transition: { type: 'spring', stiffness: 300, damping: 24 },
+		position: 'relative',
+		zIndex: 2
 	},
-	closed: { opacity: 0, y: 20 }
+	closed: {
+		opacity: 0,
+		y: 20,
+		zIndex: 0
+	}
 }
 
 const buttonHover = {
@@ -29,13 +34,12 @@ export default function Menu() {
 	// close menu when click outside
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-			if(ref.current && !ref.current.contains(event.target)) {
+			if (ref.current && !ref.current.contains(event.target)) {
 				setIsOpen(false)
 			}
 		}
 		document.addEventListener('click', handleClickOutside, true)
 	}, [ref])
-
 
 	function handleLanguageClick() {
 		setIsLanguageClicked(true)
@@ -92,7 +96,7 @@ export default function Menu() {
 					whileHover={{ ...buttonHover }}
 					onClick={() => setIsOpen(!isOpen)}
 					className="menu-button"
-				>Statistik
+				>Statistics
 				</motion.button>
 				<motion.ul
 					variants={{
@@ -103,13 +107,18 @@ export default function Menu() {
 								bounce: 0.7,
 								duration: 0.7,
 							},
+							position: 'relative',
+							zIndex: 2,
+							height: '100%'
 						},
 						closed: {
 							clipPath: "inset(10% 50% 90% 50% round 10px)",
 							transition: {
 								type: "spring",
 								duration: 0.3
-							}
+							},
+							zIndex: 0,
+							height: '0px'
 						}
 					}}
 					className="menu-item-container"
@@ -118,22 +127,22 @@ export default function Menu() {
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handleLanguageClick}
-					>Språk
+					>Popular language
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handlePremiereClick}
-					>Premiärmånad
+					>Release month
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handleLengthClick}
-					>Längd
+					>Runtime
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handleGenreClick}
-					>Antal filmer per genre
+					>Movies by genre
 					</motion.li>
 				</motion.ul>
 

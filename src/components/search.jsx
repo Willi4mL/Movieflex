@@ -50,7 +50,7 @@ export function Search() {
 				<input
 					type="text"
 					className="search-input"
-					placeholder="Filmtitel"
+					placeholder="Movie title"
 					onChange={handleSearch}
 					ref={inputRef}
 				></input>
@@ -65,9 +65,10 @@ const searchedTitle = {
 	open: {
 		opacity: 1,
 		y: 0,
-		transition: { type: 'spring', stiffness: 300, damping: 24 },
 	},
-	closed: { opacity: 0, y: 20 }
+	closed: { 
+		opacity: 0, 
+		y: 20 }
 }
 
 const ulInitial = {
@@ -125,9 +126,9 @@ export function SearchResult() {
 								>
 									<p><strong>{result.Title}</strong></p>
 									<p><strong>Genre:</strong> {result.Genre || 'Documentaries'}</p>
-									<p><strong>Premiär:</strong> {result.Premiere}</p>
-									<p><strong>Längd:</strong> {result.Runtime}</p>
-									<p><strong>Språk</strong> {result.Language}</p>
+									<p><strong>Premiere:</strong> {result.Premiere}</p>
+									<p><strong>Runtime:</strong> {result.Runtime}</p>
+									<p><strong>Language</strong> {result.Language}</p>
 								</motion.li>
 							))}
 
@@ -141,7 +142,7 @@ export function SearchResult() {
 									boxShadow: '2px 2px 7px #c0c0c0'
 								}}
 							>
-								<h2>Titel</h2>
+								<h2>Title</h2>
 								{isSearch.map((result, index) => (
 									<motion.li key={index}
 										item={searchedTitle}
@@ -158,7 +159,9 @@ export function SearchResult() {
 					<div className='border-jelly-left'></div>
 					<div className='border-jelly-left-second'></div>
 					<div className='border-jelly-left-third'></div>
-					<div className='border-jelly-circle'></div>
+					<div className='border-jelly-right'></div>
+					<div className='border-jelly-right-second'></div>
+					<div className='border-jelly-right-third'></div>
 				</motion.div>
 			</section>
 		</>
