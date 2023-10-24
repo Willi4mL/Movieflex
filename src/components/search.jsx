@@ -4,7 +4,7 @@ import featuresData from '../data/features.json'
 import documentariesData from '../data/documentaries.json'
 import { useRecoilState } from 'recoil'
 import { genreState, languageState, lengthState, premiereState, searchState } from './state'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion';
 
 const data = [...specialsData, ...featuresData, ...documentariesData]
@@ -65,10 +65,13 @@ const searchedTitle = {
 	open: {
 		opacity: 1,
 		y: 0,
+		transition: { type: "spring", stiffness: 150, damping: 10 }
 	},
-	closed: { 
-		opacity: 0, 
-		y: 20 }
+	closed: {
+		opacity: 0,
+		y: 20,
+		transition: { duration: 0.2 }
+	}
 }
 
 const ulInitial = {
@@ -76,7 +79,8 @@ const ulInitial = {
 }
 
 const liInitial = {
-	backgroundColor: '#f5f5f5'
+	backgroundColor: '#0c0c0c',
+	color: '#f0f0f0'
 }
 
 export function SearchResult() {
@@ -107,7 +111,7 @@ export function SearchResult() {
 						}
 					}}
 					style={{
-						border: "20px solid #fed56b",
+						border: "20px solid #92d2f7",
 					}}
 				>
 					{isSearch.length === 1 ? (

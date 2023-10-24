@@ -18,6 +18,15 @@ const lineLength = getLength()
 const pieGenre = getGenre()
 
 
+const options = {
+	plugins: {
+		legend: {
+			labels: {
+				color: 'lime'
+			}
+		}
+	}
+}
 
 export const MovieLanguage = () => {
 	const [isLanguageClicked, setIsLanguageClicked] = useRecoilState(languageState)
@@ -26,27 +35,41 @@ export const MovieLanguage = () => {
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
 
 
+
+
 	return (
 		<>
 			<section className='chart-container'>
 				{isLanguageClicked ?
-					<Pie data={pieLanguage} className='chart' />
+					<>
+						<h2>Popular language</h2>
+						<Pie data={pieLanguage} className='chart' />
+					</>
 					: null
 				}
 				{isPremiereClicked ?
-					<Bar data={barPremiere} className='chart' />
+				<>
+				<h2>Premiere by month</h2>
+					<Bar data={barPremiere} options={options} className='chart' />
+				</>
 					: null
 				}
 				{isLengthClicked ?
-					<Line data={lineLength} className='chart' />
+				<>
+				<h2>Runtime</h2>
+					<Line data={lineLength} options={options} className='chart' />
+				</>
 					: null
 				}
 				{isGenreClicked ?
+				<>
+				<h2>Genre</h2>
 					<Pie data={pieGenre} className='chart' />
+				</>
 					: null
 				}
 			</section>
-				<SearchResult />
+			<SearchResult />
 		</>
 	)
 }

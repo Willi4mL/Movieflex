@@ -12,7 +12,6 @@
 	font-family: arial;
 	font-weight: 600;
 	font-size: 1.2em;
-	box-shadow: var(--shadow-before);
 	text-align: center;
 }
 
@@ -24,7 +23,6 @@
 .menu-item-container {
 	margin-top: 0.5em;
 	background-color: var(--main-color);
-	box-shadow: var(--shadow-before);
 	padding: 0.5em 0.5em 1.5em 0.5em;
 	list-style-type: none;
 }
@@ -36,4 +34,10 @@
 
 .menu {
 	position: absolute;
+}
+
+@media (min-width: 768px) {
+	.menu-container {
+		margin-top: 6em;
+	}
 }

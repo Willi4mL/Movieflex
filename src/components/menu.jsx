@@ -9,17 +9,20 @@ const menuItems = {
 		opacity: 1,
 		y: 0,
 		position: 'relative',
-		zIndex: 2
+		zIndex: 2,
+		transition: { type: "spring", stiffness: 150, damping: 10 }
 	},
 	closed: {
 		opacity: 0,
-		y: 20,
-		zIndex: 0
+		y: -20,
+		zIndex: 0,
+		transition: { duration: 0.2 }
 	}
 }
 
 const buttonHover = {
-	backgroundColor: '#e7c263',
+	backgroundColor: '#75bce6',
+	color: '#f0f0f5'
 }
 
 export default function Menu() {
@@ -127,21 +130,25 @@ export default function Menu() {
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handleLanguageClick}
+						variants={menuItems}
 					>Popular language
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handlePremiereClick}
+						variants={menuItems}
 					>Release month
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handleLengthClick}
+						variants={menuItems}
 					>Runtime
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
 						onClick={handleGenreClick}
+						variants={menuItems}
 					>Movies by genre
 					</motion.li>
 				</motion.ul>

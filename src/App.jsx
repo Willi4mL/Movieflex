@@ -9,9 +9,9 @@ function App() {
     <>
       <header className='header-container'>
         <h1 className='heading'>MovieFlex</h1>
+        <Search />
       </header>
       <main>
-        <Search />
         <Menu />
         <MovieLanguage />
       </main>
