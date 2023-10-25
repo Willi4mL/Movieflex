@@ -17,55 +17,129 @@ const barPremiere = getPremiere()
 const lineLength = getLength()
 const pieGenre = getGenre()
 
-
-const options = {
-	plugins: {
-		legend: {
-			labels: {
-				color: 'lime'
-			}
-		}
-	}
-}
-
 export const MovieLanguage = () => {
 	const [isLanguageClicked, setIsLanguageClicked] = useRecoilState(languageState)
 	const [isPremiereClicked, setIsPremiereClicked] = useRecoilState(premiereState)
 	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
 
+	const optionsPremiereDuration = {
+		plugins: {
+			title: {
+				display: true,
+				text: isPremiereClicked ? 'Release month' : 'Runtime',
+				color: '#f0f0f0',
+				font: {
+					size: 22,
+				},
+			},
+			legend: {
+				display: isPremiereClicked === true ? true : false,
+				onHover: (event) => {
+					event.native.target.style.cursor = 'Pointer'
+				},
+				onLeave: (event) => {
+					event.native.target.style.cursor = 'default'
+				},
+				labels: {
+					color: '#f0f0f0',
+					font: {
+						size: 16,
+					}
+				}
+			},
+		},
+		layout: {
+			padding: 20
+		},
+		scales: {
+			y: {
+				ticks: {
+					color: "#92d2f7",
+					font: {
+						size: 16,
+					},
+					stepSize: 1,
+					beginAtZero: true
+				},
+				grid: {
+					color: '#757575'
+				},
+			},
+			x: {
+				ticks: {
+					color: "#92d2f7",
+					font: {
+						size: 16
+					},
+					stepSize: 1,
+					beginAtZero: true
+				},
+				grid: {
+					color: '#757575'
+				}
+			},
+		}
 
+	}
 
+	const optionsGenreLanguage = {
+		plugins: {
+			title: {
+				display: true,
+				text: isGenreClicked ? 'Movie genre' : 'Popular language',
+				color: '#f0f0f0',
+				font: {
+					size: 22,
+				},
+				align: 'end',
+			},
+			legend: {
+				display: true,
+				position: 'left',
+				onHover: (event) => {
+					event.native.target.style.cursor = 'Pointer'
+				},
+				onLeave: (event) => {
+					event.native.target.style.cursor = 'default'
+				},
+				labels: {
+					color: '#f0f0f0',
+					font: {
+						size: 14,
+					},
+				},
+			},
+		},
+		responsive: true,
+		maintainAspectRatio: false
+	}
 
 	return (
 		<>
 			<section className='chart-container'>
 				{isLanguageClicked ?
-					<>
-						<h2>Popular language</h2>
-						<Pie data={pieLanguage} className='chart' />
-					</>
+					<span className='language-container'>
+						<Pie data={pieLanguage} options={optionsGenreLanguage} className='chart' />
+					</span>
 					: null
 				}
 				{isPremiereClicked ?
-				<>
-				<h2>Premiere by month</h2>
-					<Bar data={barPremiere} options={options} className='chart' />
-				</>
+					<div className='premiere-contianer'>
+						<Bar data={barPremiere} options={optionsPremiereDuration} className='chart' />
+					</div>
 					: null
 				}
 				{isLengthClicked ?
-				<>
-				<h2>Runtime</h2>
-					<Line data={lineLength} options={options} className='chart' />
-				</>
+					<div className='runtime-container'>
+						<Line data={lineLength} options={optionsPremiereDuration} className='chart' />
+					</div>
 					: null
 				}
 				{isGenreClicked ?
-				<>
-				<h2>Genre</h2>
-					<Pie data={pieGenre} className='chart' />
-				</>
+					<div className='genre-container'>
+						<Pie data={pieGenre} options={optionsGenreLanguage} className='chart' />
+					</div>
 					: null
 				}
 			</section>

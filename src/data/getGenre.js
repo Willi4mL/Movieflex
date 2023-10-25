@@ -41,7 +41,6 @@ export function getGenre() {
 			{
 				data: dataArray,
 				backgroundColor: colors,
-				fill: false,
 			}
 		]
 	}

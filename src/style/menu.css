@@ -13,6 +13,7 @@
 	font-weight: 600;
 	font-size: 1.2em;
 	text-align: center;
+	box-shadow: var(--shadow-before);
 }
 
 .menu-button:hover,
@@ -23,12 +24,12 @@
 .menu-item-container {
 	margin-top: 0.5em;
 	background-color: var(--main-color);
-	padding: 0.5em 0.5em 1.5em 0.5em;
+	padding-bottom: 1em;
 	list-style-type: none;
 }
 
 .menu-item-container > * {
-	padding: 1em 0 1em 0;
+	padding: 2.2em 0.5em 0.2em 0.5em;
 	border-bottom: 1px solid #1a1a1a;
 }
 
@@ -38,6 +39,6 @@
 
 @media (min-width: 768px) {
 	.menu-container {
-		margin-top: 6em;
+		margin-top: 4em;
 	}
 }

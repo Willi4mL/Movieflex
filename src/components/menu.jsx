@@ -21,8 +21,8 @@ const menuItems = {
 }
 
 const buttonHover = {
-	backgroundColor: '#75bce6',
-	color: '#f0f0f5'
+	backgroundColor: '#060644',
+	color: '#f0f0f0'
 }
 
 export default function Menu() {
@@ -112,7 +112,6 @@ export default function Menu() {
 							},
 							position: 'relative',
 							zIndex: 2,
-							height: '100%'
 						},
 						closed: {
 							clipPath: "inset(10% 50% 90% 50% round 10px)",
@@ -121,7 +120,6 @@ export default function Menu() {
 								duration: 0.3
 							},
 							zIndex: 0,
-							height: '0px'
 						}
 					}}
 					className="menu-item-container"

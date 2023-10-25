@@ -1,21 +1,64 @@
 .chart-container {
-	margin-top: 7em;
+	margin-top: 5em;
 	display: flex;
 	justify-content: center;
 }
 
-canvas.chart {
-	max-width: 30em;
-	max-height: 30em;
-	min-width: 20em;
-	min-height: 20em;
+.chart-container > div {
+	display: flex;
+	justify-content: center;
+	height: 65vh;
+	width: 96em;
 }
 
-@media (min-width: 768px) {
-	canvas.chart{
-		max-width: 30em;
-		max-height: 30em;
-		min-width: 30em;
-		min-height: 30em;
+.chart-container > span{
+	height: 65vh;
+	width: 60em; 
+}
+
+canvas.chart {
+	padding: 1em;
+	animation: rais 1.5s ease-in;
+	transform-origin: bottom;
+	background-color: rgb(6, 6, 68);
+	border: 5px solid var(--second-color);
+	border-radius: 2em;
+	color: #f0f0f0;
+	box-shadow: var(--shadow-before);
+	position: relative;
+	z-index: 1;
+}
+
+@keyframes rais {
+	0% {
+		transform: perspective(80em) rotateX(90deg);
+	}
+
+	60% {
+		transform: perspective(120em) rotateX(-30deg);
+	}
+
+	68% {
+		transform: perspective(120em) rotateX(20deg);
+	}
+
+	75% {
+		transform: perspective(120em) rotateX(-15deg);
+	}
+
+	83% {
+		transform: perspective(50em) rotateX(7deg);
+	}
+
+	90% {
+		transform: perspective(50em) rotateX(-3deg);
+	}
+
+	95% {
+		transform: perspective(50em) rotateX(1deg);
+	}
+
+	100% {
+		transform: perspective(50em) rotateX(0);
 	}
 }

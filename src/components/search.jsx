@@ -79,8 +79,9 @@ const ulInitial = {
 }
 
 const liInitial = {
-	backgroundColor: '#0c0c0c',
-	color: '#f0f0f0'
+	backgroundColor: '#060644',
+	color: '#f0f0f0',
+	fontFamily: 'arial'
 }
 
 export function SearchResult() {

@@ -18,13 +18,13 @@
 	font-size: 1.1em;
 	border-radius: 0.5em;
 	padding: 0.2em 0 0 0.5em;
-	border: 3px solid var(--second-color);
+	border: 3px solid var(--main-color);
 	z-index: 2;
 	transition: all 0.1s linear;
 }
 
 input:focus {
-	border: 3px solid var(--main-color);
+	border: 3px solid var(--second-color);
 	outline: none;
 	animation: inputPuls 1s ease-in infinite;
 }
@@ -52,6 +52,7 @@ input:focus {
 .search-result-container {
 	display: flex;
 	justify-content: center;
+	margin-top: 2em;
 }
 
 .search-motion-div {
@@ -96,9 +97,10 @@ input:focus {
 	justify-content: center;
 	align-items: flex-start;
 	font-size: 2em;
-	background-color: #0c0c0c;
+	background-color: #060644;
 	padding-top: 1rem;
 	color: #f0f0f0;
+	font-family: arial;
 }
 
 /* Border jelly */

@@ -59,6 +59,7 @@ export function getLength() {
 				label: '',
 				data: dataArray,
 				backgroundColor: color,
+				borderColor: '#9264ff'
 			},
 		],
 	}
