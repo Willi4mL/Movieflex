@@ -9,7 +9,7 @@ function App() {
   return (
     <div className='page'>
       <header className='header-container'>
-        <h1 className='heading'>MovieFlex</h1>
+        <img className="logotype" src='./images/logo-2.png'/>
         <Menu />
         <Search />
       </header>

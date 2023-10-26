@@ -31,17 +31,26 @@ export default function Menu() {
 	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
 	const [isSearch, setIsSearch] = useRecoilState(searchState)
+	const buttonRef = useRef(null);
 	const ref = useRef(null)
+
+	function handleMenuClick() {
+		setIsOpen(!isOpen)
+	}
 
 	// close menu when click outside
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-			if (ref.current && !ref.current.contains(event.target)) {
-				setIsOpen(false)
-			}
+		  if (ref.current && !ref.current.contains(event.target) && event.target !== buttonRef.current) {
+			setIsOpen(false);
+		  }
 		}
 		document.addEventListener('click', handleClickOutside, true)
-	}, [ref])
+	  
+		return () => {
+		  document.removeEventListener('click', handleClickOutside, true)
+		}
+	  }, [ref])
 
 	function handleChartClick(clickedState) {
 		setIsLanguageClicked(clickedState === 'language')
@@ -60,7 +69,7 @@ export default function Menu() {
 				className="menu"
 			>
 				<motion.button
-					onClick={() => setIsOpen(!isOpen)}
+					onClick={handleMenuClick}
 					whileTap={{
 						scale: 0.95,
 						transition: {
@@ -70,6 +79,7 @@ export default function Menu() {
 						},
 					}}
 					whileHover={{ ...buttonHover }}
+					ref={buttonRef} 
 					className="menu-button"
 				>Statistics
 				</motion.button>
@@ -80,7 +90,7 @@ export default function Menu() {
 							transition: {
 								type: "spring",
 								bounce: 0.7,
-								duration: 0.7,
+								duration: 0.9,
 							},
 							position: 'relative',
 							zIndex: 2,
@@ -89,7 +99,7 @@ export default function Menu() {
 							clipPath: "inset(10% 50% 90% 50% round 10px)",
 							transition: {
 								type: "spring",
-								duration: 0.3
+								duration: 0.5
 							},
 							zIndex: 0,
 						}

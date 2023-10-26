@@ -69,7 +69,7 @@ const searchedTitle = {
 	},
 	closed: {
 		opacity: 0,
-		y: 20,
+		y: -20,
 		transition: { duration: 0.2 }
 	}
 }
@@ -102,7 +102,7 @@ export function SearchResult() {
 								transition: {
 									type: "spring",
 									bounce: 0.7,
-									duration: 0.7,
+									duration: 0.9,
 								},
 							},
 							closed: {
@@ -129,6 +129,7 @@ export function SearchResult() {
 									<motion.li key={index}
 										item={searchedTitle}
 										initial={{ ...liInitial }}
+										variants={searchedTitle}
 										className='singel-title-li'
 									>
 										<p><strong>{result.Title}</strong></p>
@@ -153,6 +154,7 @@ export function SearchResult() {
 										<motion.li key={index}
 											item={searchedTitle}
 											initial={{ ...liInitial }}
+											variants={searchedTitle}
 											className='multi-title-li'
 										><p>{result.Title}</p>
 										</motion.li>

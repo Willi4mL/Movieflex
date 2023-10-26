@@ -11,26 +11,12 @@
 	margin-bottom: 0.7em;
 }
 
-.heading {
-	grid-column: 2 /span 2;
-	grid-row: 1;
+.logotype {
+	grid-column: 1;
+	align-self: start;
+	margin-left: 1em;
+	width: 20em;
 	display: flex;
 	justify-self: center;
-	border-bottom: 5px solid var(--second-color);
-	border-top: 3px solid var(--main-color);
-	border-radius: 0 0.8em 0 0.8em;
-	width: 6.5em;
-	padding-left: 0.45em;
-	font-family: valoon;
-	font-size: 3em;
-	letter-spacing: 0.1em;
-	font-weight: lighter;
-}
-
-@media (min-width: 768px) {
-	.heading {
-		grid-column: 1;
-		align-self: start;
-		margin-bottom: 0;
-	}
+	align-self: center;
 }

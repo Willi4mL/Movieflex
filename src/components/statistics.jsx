@@ -80,9 +80,6 @@ export const MovieLanguage = () => {
 				}
 			},
 		},
-		animation: {
-			delay: 5000
-		},
 	}
 
 	const optionsGenreLanguage = {
@@ -112,9 +109,6 @@ export const MovieLanguage = () => {
 					},
 				},
 			},
-		},
-		animation: {
-			delay: 1500
 		},
 		responsive: true,
 		maintainAspectRatio: false

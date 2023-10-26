@@ -1,10 +1,12 @@
 /* Input */
 .search-container {
-	grid-column:  2 /span 2;
-	grid-row: 2;
+	grid-column:  4;
+	grid-row: 1;
+	align-self: center;
+	margin-bottom: 0;
 	display: flex;
 	justify-self: center;
-	align-self: end;
+	margin-right: 1em;
 }
 
 .search-container-position {
@@ -24,7 +26,6 @@
 }
 
 input:focus {
-	outline: none;
 	animation: inputPuls 1.5s ease-in infinite;
 }
 
@@ -33,7 +34,7 @@ input:focus {
 		box-shadow: none;
 	}
 	50% {
-		box-shadow: 2px 2px 15px var(--second-color);
+		box-shadow: 2px 2px 25px var(--second-color);
 	}
 }
 
@@ -43,15 +44,6 @@ input:focus {
 	right: 5px;
 	top: 6px;
 	z-index: 3;
-}
-
-@media (min-width: 768px) {
-	.search-container {
-		grid-column:  4;
-		grid-row: 1;
-		align-self: center;
-		margin-bottom: 0;
-	}
 }
 
 /* Content */

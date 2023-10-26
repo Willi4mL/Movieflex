@@ -44,5 +44,4 @@ export function getGenre() {
 			}
 		]
 	}
-
 }
