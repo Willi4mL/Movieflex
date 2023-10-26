@@ -21,8 +21,7 @@ const menuItems = {
 }
 
 const buttonHover = {
-	backgroundColor: '#060644',
-	color: '#f0f0f0'
+	backgroundColor: '#1ada90',
 }
 
 export default function Menu() {
@@ -44,38 +43,11 @@ export default function Menu() {
 		document.addEventListener('click', handleClickOutside, true)
 	}, [ref])
 
-	function handleLanguageClick() {
-		setIsLanguageClicked(true)
-		setIsLengthClicked(false)
-		setIsPremiereClicked(false)
-		setIsGenreClicked(false)
-		setIsOpen(false)
-		setIsSearch([])
-	}
-
-	function handlePremiereClick() {
-		setIsPremiereClicked(true)
-		setIsLengthClicked(false)
-		setIsLanguageClicked(false)
-		setIsGenreClicked(false)
-		setIsOpen(false)
-		setIsSearch([])
-	}
-
-	function handleLengthClick() {
-		setIsLengthClicked(true)
-		setIsPremiereClicked(false)
-		setIsLanguageClicked(false)
-		setIsGenreClicked(false)
-		setIsOpen(false)
-		setIsSearch([])
-	}
-
-	function handleGenreClick() {
-		setIsGenreClicked(true)
-		setIsLengthClicked(false)
-		setIsPremiereClicked(false)
-		setIsLanguageClicked(false)
+	function handleChartClick(clickedState) {
+		setIsLanguageClicked(clickedState === 'language')
+		setIsPremiereClicked(clickedState === 'premiere')
+		setIsLengthClicked(clickedState === 'length')
+		setIsGenreClicked(clickedState === 'genre')
 		setIsOpen(false)
 		setIsSearch([])
 	}
@@ -88,6 +60,7 @@ export default function Menu() {
 				className="menu"
 			>
 				<motion.button
+					onClick={() => setIsOpen(!isOpen)}
 					whileTap={{
 						scale: 0.95,
 						transition: {
@@ -97,7 +70,6 @@ export default function Menu() {
 						},
 					}}
 					whileHover={{ ...buttonHover }}
-					onClick={() => setIsOpen(!isOpen)}
 					className="menu-button"
 				>Statistics
 				</motion.button>
@@ -127,25 +99,25 @@ export default function Menu() {
 				>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
-						onClick={handleLanguageClick}
+						onClick={() => handleChartClick('language')}
 						variants={menuItems}
 					>Popular language
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
-						onClick={handlePremiereClick}
+						onClick={() => handleChartClick('premiere')}
 						variants={menuItems}
 					>Release month
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
-						onClick={handleLengthClick}
+						onClick={() => handleChartClick('length')}
 						variants={menuItems}
 					>Runtime
 					</motion.li>
 					<motion.li item={menuItems}
 						whileHover={{ ...buttonHover }}
-						onClick={handleGenreClick}
+						onClick={() => handleChartClick('genre')}
 						variants={menuItems}
 					>Movies by genre
 					</motion.li>

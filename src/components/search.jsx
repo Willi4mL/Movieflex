@@ -89,86 +89,90 @@ export function SearchResult() {
 
 	return (
 		<>
-			<section className='search-result-container'>
-				<motion.div
-					initial='closed'
-					animate={isSearch.length > 0 ? 'open' : 'closed'}
-					className='search-motion-div'
-					variants={{
-						open: {
-							clipPath: "inset(0% 0% 0% 0% round 10px)",
-							transition: {
-								type: "spring",
-								bounce: 0.7,
-								duration: 0.7,
-							},
-						},
-						closed: {
-							clipPath: "inset(10% 50% 90% 50% round 10px)",
-							transition: {
-								type: "spring",
-								duration: 0.3
-							}
-						}
-					}}
-					style={{
-						border: "20px solid #92d2f7",
-					}}
-				>
-					{isSearch.length === 1 ? (
-						<motion.ul
-							initial={{ ...ulInitial }}
-							style={{
-								border: "5px solid #9264FF",
-								boxShadow: '2px 2px 7px #c0c0c0'
-							}}
-						>
-							{isSearch.map((result, index) => (
-								<motion.li key={index}
-									item={searchedTitle}
-									initial={{ ...liInitial }}
-									className='singel-title-li'
-								>
-									<p><strong>{result.Title}</strong></p>
-									<p><strong>Genre:</strong> {result.Genre || 'Documentaries'}</p>
-									<p><strong>Premiere:</strong> {result.Premiere}</p>
-									<p><strong>Runtime:</strong> {result.Runtime}</p>
-									<p><strong>Language</strong> {result.Language}</p>
-								</motion.li>
-							))}
+			{isSearch.length >= 1 ? (
 
-						</motion.ul>
-					) : (
-						<>
+				<section className='search-result-container'>
+					<motion.div
+						initial='closed'
+						animate={isSearch.length > 0 ? 'open' : 'closed'}
+						className='search-motion-div'
+						variants={{
+							open: {
+								clipPath: "inset(0% 0% 0% 0% round 10px)",
+								transition: {
+									type: "spring",
+									bounce: 0.7,
+									duration: 0.7,
+								},
+							},
+							closed: {
+								clipPath: "inset(10% 50% 90% 50% round 10px)",
+								transition: {
+									type: "spring",
+									duration: 0.3
+								}
+							}
+						}}
+						style={{
+							border: "25px double #1ffda8",
+							
+						}}
+					>
+						{isSearch.length === 1 ? (
 							<motion.ul
 								initial={{ ...ulInitial }}
 								style={{
 									border: "5px solid #9264FF",
-									boxShadow: '2px 2px 7px #c0c0c0'
 								}}
 							>
-								<h2>Title</h2>
 								{isSearch.map((result, index) => (
 									<motion.li key={index}
 										item={searchedTitle}
 										initial={{ ...liInitial }}
-										className='multi-title-li'
-									><p>{result.Title}</p>
+										className='singel-title-li'
+									>
+										<p><strong>{result.Title}</strong></p>
+										<p><strong>Genre:</strong> {result.Genre || 'Documentaries'}</p>
+										<p><strong>Premiere:</strong> {result.Premiere}</p>
+										<p><strong>Runtime:</strong> {result.Runtime}</p>
+										<p><strong>Language</strong> {result.Language}</p>
 									</motion.li>
 								))}
+
 							</motion.ul>
-						</>
-					)}
-					<div className='border-jelly-top'></div>
-					<div className='border-jelly-top-hang'></div>
-					<div className='border-jelly-left'></div>
-					<div className='border-jelly-left-second'></div>
-					<div className='border-jelly-left-third'></div>
-					<div className='border-jelly-right'></div>
-					<div className='border-jelly-right-second'></div>
-					<div className='border-jelly-right-third'></div>
-				</motion.div>
-			</section>
+						) : (
+							<>
+								<motion.ul
+									initial={{ ...ulInitial }}
+									style={{
+										border: "5px solid #9264FF",
+									}}
+								>
+									<h2>Title</h2>
+									{isSearch.map((result, index) => (
+										<motion.li key={index}
+											item={searchedTitle}
+											initial={{ ...liInitial }}
+											className='multi-title-li'
+										><p>{result.Title}</p>
+										</motion.li>
+									))}
+								</motion.ul>
+							</>
+						)}
+						<div className='border-jelly-top'></div>
+						<div className='border-jelly-top-hang'></div>
+						<div className='border-jelly-left'></div>
+						<div className='border-jelly-left-second'></div>
+						<div className='border-jelly-left-third'></div>
+						<div className='border-jelly-right'></div>
+						<div className='border-jelly-right-second'></div>
+						<div className='border-jelly-right-third'></div>
+					</motion.div>
+				</section>
+			) : (
+				null
+			)}
 		</>
 	)
 }

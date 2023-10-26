@@ -55,7 +55,7 @@ export const MovieLanguage = () => {
 		scales: {
 			y: {
 				ticks: {
-					color: "#92d2f7",
+					color: "#f0f0f0",
 					font: {
 						size: 16,
 					},
@@ -68,7 +68,7 @@ export const MovieLanguage = () => {
 			},
 			x: {
 				ticks: {
-					color: "#92d2f7",
+					color: "#f0f0f0",
 					font: {
 						size: 16
 					},
@@ -79,8 +79,10 @@ export const MovieLanguage = () => {
 					color: '#757575'
 				}
 			},
-		}
-
+		},
+		animation: {
+			delay: 5000
+		},
 	}
 
 	const optionsGenreLanguage = {
@@ -110,6 +112,9 @@ export const MovieLanguage = () => {
 					},
 				},
 			},
+		},
+		animation: {
+			delay: 1500
 		},
 		responsive: true,
 		maintainAspectRatio: false

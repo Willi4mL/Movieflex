@@ -1,7 +1,8 @@
 .menu-container {
+	grid-column: 2 / span 2;
+	grid-row: 3;
 	display: flex;
 	justify-content: center;
-	margin-top: 2em;
 }
 
 .menu-button {
@@ -14,6 +15,7 @@
 	font-size: 1.2em;
 	text-align: center;
 	box-shadow: var(--shadow-before);
+	transition: all 0.5s ease-in;
 }
 
 .menu-button:hover,
@@ -34,11 +36,21 @@
 }
 
 .menu {
-	position: absolute;
+	position:absolute;
+	top: 41px;
 }
 
 @media (min-width: 768px) {
 	.menu-container {
-		margin-top: 4em;
+		grid-column: 2 / span 2 ;
+		grid-row: 2;
+	}
+}
+
+@media (min-width: 1200px) {
+	.menu-container {
+		grid-column: 2 / span 2 ;
+		grid-row: 1;
+		align-self: center;
 	}
 }

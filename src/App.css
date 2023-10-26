@@ -10,56 +10,13 @@
 }
 
 :root {
-	--shadow-before: 1px 2px 7px #9c9c9c;
-	--main-color: #92d2f7;
+	--shadow-before: 1px 3px 5px #202020;
+	--main-color: #1ffda8;
 	--second-color: #9264ff;
+	--background-color: #060644;
 }
 
-
-.header-container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	padding-top: 2em;
-	padding-bottom: 1em;
-	border-bottom: 1px solid var(--main-color);
-}
-
-.heading {
-	margin-top: 0.4em;
-	border-bottom: 3px solid var(--second-color);
-	border-top: 3px solid var(--main-color);
-	border-radius: 0 0.8em 0 0.8em;
-	width: 6.5em;
-	padding-left: 0.45em;
-	font-family: valoon;
-	font-size: 3em;
-	letter-spacing: 0.1em;
-	font-weight: lighter;
-	grid-column: 2 / span 2;
-	grid-row: 1;
-	display: flex;
-	justify-self: center;
-}
-
-@media (min-width: 768px) {
-	.heading {
-		font-size: 3.5em;
-		margin-left: 1em;
-		grid-column: 1;
-		grid-row: 1;
-		display: flex;
-		margin-top: 0;
-	}
-}
-
-@media (min-width: 1200px) {
-	.heading {
-		font-size: 4em;
-		margin-left: 0;
-		grid-column: 2 / span 2;
-		grid-row: 1;
-		display: flex;
-		align-self: center;
-		margin-top: 0;
-	}
+.page {
+	height: 100vh;
+	background-image: linear-gradient(to bottom, #060644, #3d316e, #6e5f9a, #a192c9, #d6c7f9);
 }

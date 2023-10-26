@@ -20,11 +20,11 @@ canvas.chart {
 	padding: 1em;
 	animation: rais 1.5s ease-in;
 	transform-origin: bottom;
-	background-color: rgb(6, 6, 68);
-	border: 5px solid var(--second-color);
+	background-color: var(--background-color);
+	border: 15px solid var(--second-color);
 	border-radius: 2em;
 	color: #f0f0f0;
-	box-shadow: var(--shadow-before);
+	box-shadow: 4px 5px 10px #202020;
 	position: relative;
 	z-index: 1;
 }
@@ -32,6 +32,7 @@ canvas.chart {
 @keyframes rais {
 	0% {
 		transform: perspective(80em) rotateX(90deg);
+		box-shadow: none;
 	}
 
 	60% {
@@ -60,5 +61,6 @@ canvas.chart {
 
 	100% {
 		transform: perspective(50em) rotateX(0);
+		box-shadow: 4px 5px 10px #202020;
 	}
 }
