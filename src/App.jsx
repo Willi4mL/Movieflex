@@ -1,5 +1,6 @@
 import './App.css'
 import './style/header.css'
+import logotype from '../images/logotype.png'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import Menu from './components/menu'
@@ -27,7 +28,7 @@ function App() {
   return (
     <div className='page'>
       <header className='header-container'>
-        <img className="logotype" src='./images/logo-2.png' onClick={clearContent}/>
+        <img className="logotype" src={logotype} alt='Logotype' onClick={clearContent}/>
         <Menu />
         <Search />
       </header>
