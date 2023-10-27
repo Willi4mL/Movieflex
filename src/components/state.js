@@ -22,5 +22,5 @@ export const genreState = atom({
 
 export const searchState = atom({
 	key: 'searchState',
-	default: []
+	default: ''
 })

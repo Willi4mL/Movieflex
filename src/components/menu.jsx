@@ -20,8 +20,8 @@ const menuItems = {
 	}
 }
 
-const buttonHover = {
-	backgroundColor: '#1ada90',
+const buttonHoverList = {
+	backgroundColor: '#1bd88f',
 }
 
 export default function Menu() {
@@ -31,26 +31,30 @@ export default function Menu() {
 	const [isLengthClicked, setIsLengthClicked] = useRecoilState(lengthState)
 	const [isGenreClicked, setIsGenreClicked] = useRecoilState(genreState)
 	const [isSearch, setIsSearch] = useRecoilState(searchState)
-	const buttonRef = useRef(null);
+	const buttonRef = useRef(null)
 	const ref = useRef(null)
 
 	function handleMenuClick() {
+		if(isOpen) {
+			buttonRef.current.blur()
+		}
 		setIsOpen(!isOpen)
+		setIsSearch('')
 	}
 
 	// close menu when click outside
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-		  if (ref.current && !ref.current.contains(event.target) && event.target !== buttonRef.current) {
-			setIsOpen(false);
-		  }
+			if (ref.current && !ref.current.contains(event.target) && event.target !== buttonRef.current) {
+				setIsOpen(false);
+			}
 		}
 		document.addEventListener('click', handleClickOutside, true)
-	  
+
 		return () => {
-		  document.removeEventListener('click', handleClickOutside, true)
+			document.removeEventListener('click', handleClickOutside, true)
 		}
-	  }, [ref])
+	}, [ref])
 
 	function handleChartClick(clickedState) {
 		setIsLanguageClicked(clickedState === 'language')
@@ -70,16 +74,8 @@ export default function Menu() {
 			>
 				<motion.button
 					onClick={handleMenuClick}
-					whileTap={{
-						scale: 0.95,
-						transition: {
-							type: "spring",
-							bounce: 0.7,
-							duration: 0.7,
-						},
-					}}
-					whileHover={{ ...buttonHover }}
-					ref={buttonRef} 
+					ref={buttonRef}
+					autoFocus={isOpen}
 					className="menu-button"
 				>Statistics
 				</motion.button>
@@ -108,25 +104,25 @@ export default function Menu() {
 					ref={ref}
 				>
 					<motion.li item={menuItems}
-						whileHover={{ ...buttonHover }}
+						whileHover={{ ...buttonHoverList }}
 						onClick={() => handleChartClick('language')}
 						variants={menuItems}
 					>Popular language
 					</motion.li>
 					<motion.li item={menuItems}
-						whileHover={{ ...buttonHover }}
+						whileHover={{ ...buttonHoverList }}
 						onClick={() => handleChartClick('premiere')}
 						variants={menuItems}
 					>Release month
 					</motion.li>
 					<motion.li item={menuItems}
-						whileHover={{ ...buttonHover }}
+						whileHover={{ ...buttonHoverList }}
 						onClick={() => handleChartClick('length')}
 						variants={menuItems}
 					>Runtime
 					</motion.li>
 					<motion.li item={menuItems}
-						whileHover={{ ...buttonHover }}
+						whileHover={{ ...buttonHoverList }}
 						onClick={() => handleChartClick('genre')}
 						variants={menuItems}
 					>Movies by genre

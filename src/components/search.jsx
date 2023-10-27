@@ -1,4 +1,5 @@
 import '../style/search.css'
+import '../style/searchContent.css'
 import specialsData from '../data/specials.json'
 import featuresData from '../data/features.json'
 import documentariesData from '../data/documentaries.json'
@@ -21,6 +22,12 @@ export function Search() {
 	useEffect(() => {
 		inputRef.current.focus()
 	}, [])
+
+	useEffect(() => {
+		if(isSearch === '') {
+			inputRef.current.value = ''
+		}
+	},[isSearch])
 
 	function handleSearch(event) {
 		const query = (event.target.value.toLowerCase())
@@ -59,7 +66,6 @@ export function Search() {
 	)
 }
 
-
 // Search result
 const searchedTitle = {
 	open: {
@@ -80,7 +86,7 @@ const ulInitial = {
 
 const liInitial = {
 	backgroundColor: '#060644',
-	color: '#f0f0f0',
+	color: '#dad9d9',
 	fontFamily: 'arial'
 }
 
@@ -115,7 +121,6 @@ export function SearchResult() {
 						}}
 						style={{
 							border: "25px double #1ffda8",
-							
 						}}
 					>
 						{isSearch.length === 1 ? (
