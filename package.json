@@ -1,5 +1,5 @@
 {
-  "homepage": "https://willi4ml.github.io/movieflex",
+  "homepage": "https://Willi4mL.github.io/MovieFlex",
   "name": "movieflex",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
