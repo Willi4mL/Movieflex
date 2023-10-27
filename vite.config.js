@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   build: {
-    base: 'MovieFlex',
+    base: '/MovieFlex',
     chunkSizeWarningLimit: 1600,}
 })
