@@ -1,5 +1,6 @@
 import '../style/search.css'
 import '../style/searchContent.css'
+import magnifying from '../../images/magnifying.png'
 import specialsData from '../data/specials.json'
 import featuresData from '../data/features.json'
 import documentariesData from '../data/documentaries.json'
@@ -53,7 +54,7 @@ export function Search() {
 	return (
 		<section className="search-container">
 			<nav className='search-container-position'>
-				<img className='magnifying' src='../images/magnifying.png' />
+				<img className='magnifying' src={magnifying} alt='Magnifying' />
 				<input
 					type="text"
 					className="search-input"
